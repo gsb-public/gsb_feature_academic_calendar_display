@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the gsb_feature_academic_calendar_display feature.
+ */
+
+include_once 'gsb_feature_academic_calendar_display.features.inc';

@@ -1,0 +1,7 @@
+name = GSB Feature Academic Calendar Display
+core = 7.x
+package = GSB
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:1
+features[views_view][] = academic_calendar
