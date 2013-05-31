@@ -1,7 +1,9 @@
 name = GSB Feature Academic Calendar Display
 core = 7.x
 package = GSB
+php = 5.2.4
 dependencies[] = views
+dependencies[] = views_content
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[views_view][] = academic_calendar
