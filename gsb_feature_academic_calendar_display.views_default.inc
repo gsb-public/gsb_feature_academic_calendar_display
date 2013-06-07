@@ -44,21 +44,21 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['style_options']['default'] = 'field_event_date';
   $handler->display->display_options['style_options']['info'] = array(
     'field_event_date' => array(
-      'sortable' => 1,
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_academic_calendar_link' => array(
-      'sortable' => 1,
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_academic_quarter' => array(
-      'sortable' => 1,
+      'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -69,9 +69,10 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
-  $handler->display->display_options['fields']['field_event_date']['label'] = 'Date';
+  $handler->display->display_options['fields']['field_event_date']['label'] = '';
+  $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'long',
+    'format_type' => 'short',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',
@@ -89,6 +90,8 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['fields']['field_academic_calendar_link']['id'] = 'field_academic_calendar_link';
   $handler->display->display_options['fields']['field_academic_calendar_link']['table'] = 'field_data_field_academic_calendar_link';
   $handler->display->display_options['fields']['field_academic_calendar_link']['field'] = 'field_academic_calendar_link';
+  $handler->display->display_options['fields']['field_academic_calendar_link']['label'] = '';
+  $handler->display->display_options['fields']['field_academic_calendar_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_academic_calendar_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_academic_calendar_link']['settings'] = array(
     'conditions' => array(
