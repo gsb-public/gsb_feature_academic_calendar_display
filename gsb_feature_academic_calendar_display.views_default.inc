@@ -114,6 +114,17 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       ),
     ),
   );
+  /* Contextual filter: Content: Academic year (field_academic_year) */
+  $handler->display->display_options['arguments']['field_academic_year_value']['id'] = 'field_academic_year_value';
+  $handler->display->display_options['arguments']['field_academic_year_value']['table'] = 'field_data_field_academic_year';
+  $handler->display->display_options['arguments']['field_academic_year_value']['field'] = 'field_academic_year_value';
+  $handler->display->display_options['arguments']['field_academic_year_value']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = '2013';
+  $handler->display->display_options['arguments']['field_academic_year_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_academic_year_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_academic_year_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_academic_year_value']['limit'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -162,6 +173,12 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 0;
   $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
   $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'field_academic_year_value' => array(
+      'type' => 'panel',
+      'panel' => '0',
+    ),
+  );
   $export['academic_calendar'] = $view;
 
   return $export;
