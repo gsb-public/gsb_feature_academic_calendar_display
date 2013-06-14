@@ -41,7 +41,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
     'field_academic_calendar_link' => 'field_academic_calendar_link',
     'field_academic_quarter' => 'field_academic_quarter',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_event_date';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'field_event_date' => array(
       'sortable' => 0,
@@ -65,6 +65,13 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = 'No upcoming events';
+  $handler->display->display_options['empty']['area']['format'] = 'gsb_wysiwyg_text';
   /* Field: Content: Event Date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
@@ -114,6 +121,14 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       ),
     ),
   );
+  /* Sort criterion: Content: Quarter (field_academic_quarter) */
+  $handler->display->display_options['sorts']['field_academic_quarter_value']['id'] = 'field_academic_quarter_value';
+  $handler->display->display_options['sorts']['field_academic_quarter_value']['table'] = 'field_data_field_academic_quarter';
+  $handler->display->display_options['sorts']['field_academic_quarter_value']['field'] = 'field_academic_quarter_value';
+  /* Sort criterion: Content: Date -  start date (field_event_date) */
+  $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
   /* Contextual filter: Content: Academic year (field_academic_year) */
   $handler->display->display_options['arguments']['field_academic_year_value']['id'] = 'field_academic_year_value';
   $handler->display->display_options['arguments']['field_academic_year_value']['table'] = 'field_data_field_academic_year';
