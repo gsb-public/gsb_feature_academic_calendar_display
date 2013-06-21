@@ -66,6 +66,10 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Header: GSB Academic Year: Navigation */
+  $handler->display->display_options['header']['navigation']['id'] = 'navigation';
+  $handler->display->display_options['header']['navigation']['table'] = 'gsb_academic_year';
+  $handler->display->display_options['header']['navigation']['field'] = 'navigation';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -195,6 +199,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       'panel' => '0',
     ),
   );
+  $handler->display->display_options['inherit_panels_path'] = '1';
   $export['academic_calendar'] = $view;
 
   return $export;
