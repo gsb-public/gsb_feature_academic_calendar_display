@@ -17,7 +17,18 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'programs/msx/academic-experience/academic-calendar/!year';
   $page->access = array();
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Academic Calendar',
+    'name' => 'section-12406',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array(
     'year' => array(
       'id' => '',
