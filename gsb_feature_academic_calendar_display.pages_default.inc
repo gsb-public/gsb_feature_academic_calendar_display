@@ -103,6 +103,9 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
       'path' => NULL,
       'view_settings' => 'fields',
       'header_type' => 'none',
+      'arguments' => array(
+        'tid' => 'MSx',
+      ),
     );
     $pane->cache = array();
     $pane->style = array(

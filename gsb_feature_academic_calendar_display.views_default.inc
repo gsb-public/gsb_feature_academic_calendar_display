@@ -77,7 +77,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No upcoming events';
   $handler->display->display_options['empty']['area']['format'] = 'gsb_wysiwyg_text';
-  /* Field: Content: Event Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
@@ -140,11 +140,25 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['arguments']['field_academic_year_value']['field'] = 'field_academic_year_value';
   $handler->display->display_options['arguments']['field_academic_year_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = '2013';
+  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = 2013;
   $handler->display->display_options['arguments']['field_academic_year_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_academic_year_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_academic_year_value']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['field_academic_year_value']['limit'] = '0';
+  /* Contextual filter: Content: Has taxonomy term ID */
+  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
+  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
+    'program' => 'program',
+  );
+  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'convert';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -159,28 +173,6 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'academic_calendar_event' => 'academic_calendar_event',
   );
-  /* Filter criterion: Field: Program (field_program_single) */
-  $handler->display->display_options['filters']['field_program_single_tid']['id'] = 'field_program_single_tid';
-  $handler->display->display_options['filters']['field_program_single_tid']['table'] = 'field_data_field_program_single';
-  $handler->display->display_options['filters']['field_program_single_tid']['field'] = 'field_program_single_tid';
-  $handler->display->display_options['filters']['field_program_single_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_program_single_tid']['expose']['operator_id'] = 'field_program_single_tid_op';
-  $handler->display->display_options['filters']['field_program_single_tid']['expose']['label'] = 'Program (field_program_single)';
-  $handler->display->display_options['filters']['field_program_single_tid']['expose']['operator'] = 'field_program_single_tid_op';
-  $handler->display->display_options['filters']['field_program_single_tid']['expose']['identifier'] = 'field_program_single_tid';
-  $handler->display->display_options['filters']['field_program_single_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    4 => 0,
-    5 => 0,
-    7 => 0,
-    6 => 0,
-    8 => 0,
-    9 => 0,
-  );
-  $handler->display->display_options['filters']['field_program_single_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_program_single_tid']['vocabulary'] = 'program';
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
@@ -196,7 +188,19 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['argument_input'] = array(
     'field_academic_year_value' => array(
       'type' => 'panel',
+      'context' => 'entity:field_collection_item.field_cta_action',
+      'context_optional' => 0,
       'panel' => '0',
+      'fixed' => '',
+      'label' => 'Content: Academic year (field_academic_year)',
+    ),
+    'tid' => array(
+      'type' => 'user',
+      'context' => 'entity:field_collection_item.field_cta_action',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Program',
     ),
   );
   $handler->display->display_options['inherit_panels_path'] = '1';
