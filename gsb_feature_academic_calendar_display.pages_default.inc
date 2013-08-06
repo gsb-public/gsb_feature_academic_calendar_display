@@ -103,6 +103,9 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
       'path' => NULL,
       'view_settings' => 'fields',
       'header_type' => 'none',
+      'arguments' => array(
+        'tid' => 'MBA',
+      ),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -230,7 +233,7 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
     $display->content['new-2'] = $pane;
     $display->panels['maintop'][0] = 'new-2';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-2';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['msx_academic_calendar'] = $page;
