@@ -16,7 +16,10 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
   $page->admin_title = 'MBA Academic Calendar';
   $page->admin_description = '';
   $page->path = 'programs/mba/academic-experience/academic-calendar/!year';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Academic Calendar',
@@ -131,7 +134,10 @@ function gsb_feature_academic_calendar_display_default_page_manager_pages() {
   $page->admin_title = 'MSx Academic Calendar';
   $page->admin_description = '';
   $page->path = 'programs/msx/academic-experience/academic-calendar/!year';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Academic Calendar',

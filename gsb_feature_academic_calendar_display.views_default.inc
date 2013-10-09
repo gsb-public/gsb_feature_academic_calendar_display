@@ -140,7 +140,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['arguments']['field_academic_year_value']['field'] = 'field_academic_year_value';
   $handler->display->display_options['arguments']['field_academic_year_value']['default_action'] = 'default';
   $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = 2013;
+  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = 2014;
   $handler->display->display_options['arguments']['field_academic_year_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_academic_year_value']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_academic_year_value']['summary_options']['items_per_page'] = '25';
