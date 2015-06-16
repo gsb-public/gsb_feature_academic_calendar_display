@@ -32,18 +32,38 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['grouping'] = array(
     0 => array(
+      'field' => 'field_academic_year',
+      'rendered' => 1,
+      'rendered_strip' => 0,
+    ),
+    1 => array(
       'field' => 'field_academic_quarter',
       'rendered' => 1,
       'rendered_strip' => 0,
     ),
   );
   $handler->display->display_options['style_options']['columns'] = array(
+    'field_academic_year' => 'field_academic_year',
+    'field_academic_quarter' => 'field_academic_quarter',
     'field_event_date' => 'field_event_date',
     'field_academic_calendar_link' => 'field_academic_calendar_link',
-    'field_academic_quarter' => 'field_academic_quarter',
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'field_academic_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_academic_quarter' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'field_event_date' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
@@ -58,18 +78,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_academic_quarter' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
   );
-  /* Footer: GSB Academic Year: Navigation */
-  $handler->display->display_options['footer']['navigation']['id'] = 'navigation';
-  $handler->display->display_options['footer']['navigation']['table'] = 'gsb_academic_year';
-  $handler->display->display_options['footer']['navigation']['field'] = 'navigation';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -77,7 +86,37 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'No upcoming events';
   $handler->display->display_options['empty']['area']['format'] = 'gsb_wysiwyg_text';
-  /* Field: Content: Date */
+  /* Field: Content: Academic year */
+  $handler->display->display_options['fields']['field_academic_year']['id'] = 'field_academic_year';
+  $handler->display->display_options['fields']['field_academic_year']['table'] = 'field_data_field_academic_year';
+  $handler->display->display_options['fields']['field_academic_year']['field'] = 'field_academic_year';
+  $handler->display->display_options['fields']['field_academic_year']['label'] = '';
+  $handler->display->display_options['fields']['field_academic_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_academic_year']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_academic_year']['alter']['text'] = '[field_academic_year] Academic Year';
+  $handler->display->display_options['fields']['field_academic_year']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_academic_year']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Quarter */
+  $handler->display->display_options['fields']['field_academic_quarter']['id'] = 'field_academic_quarter';
+  $handler->display->display_options['fields']['field_academic_quarter']['table'] = 'field_data_field_academic_quarter';
+  $handler->display->display_options['fields']['field_academic_quarter']['field'] = 'field_academic_quarter';
+  $handler->display->display_options['fields']['field_academic_quarter']['label'] = '';
+  $handler->display->display_options['fields']['field_academic_quarter']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_academic_quarter']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_academic_quarter']['settings'] = array(
+    'conditions' => array(
+      0 => array(
+        'condition' => '',
+      ),
+    ),
+  );
+  /* Field: Content: Event Date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
@@ -112,53 +151,14 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Content: Quarter */
-  $handler->display->display_options['fields']['field_academic_quarter']['id'] = 'field_academic_quarter';
-  $handler->display->display_options['fields']['field_academic_quarter']['table'] = 'field_data_field_academic_quarter';
-  $handler->display->display_options['fields']['field_academic_quarter']['field'] = 'field_academic_quarter';
-  $handler->display->display_options['fields']['field_academic_quarter']['label'] = '';
-  $handler->display->display_options['fields']['field_academic_quarter']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_academic_quarter']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_academic_quarter']['settings'] = array(
-    'conditions' => array(
-      0 => array(
-        'condition' => '',
-      ),
-    ),
-  );
   /* Sort criterion: Content: Quarter (field_academic_quarter) */
   $handler->display->display_options['sorts']['field_academic_quarter_value']['id'] = 'field_academic_quarter_value';
   $handler->display->display_options['sorts']['field_academic_quarter_value']['table'] = 'field_data_field_academic_quarter';
   $handler->display->display_options['sorts']['field_academic_quarter_value']['field'] = 'field_academic_quarter_value';
-  /* Sort criterion: Content: Date -  start date (field_event_date) */
+  /* Sort criterion: Content: Event Date -  start date (field_event_date) */
   $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
-  /* Contextual filter: Content: Academic year (field_academic_year) */
-  $handler->display->display_options['arguments']['field_academic_year_value']['id'] = 'field_academic_year_value';
-  $handler->display->display_options['arguments']['field_academic_year_value']['table'] = 'field_data_field_academic_year';
-  $handler->display->display_options['arguments']['field_academic_year_value']['field'] = 'field_academic_year_value';
-  $handler->display->display_options['arguments']['field_academic_year_value']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = 2014;
-  $handler->display->display_options['arguments']['field_academic_year_value']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_academic_year_value']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_academic_year_value']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_academic_year_value']['limit'] = '0';
-  /* Contextual filter: Content: Has taxonomy term ID */
-  $handler->display->display_options['arguments']['tid']['id'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
-  $handler->display->display_options['arguments']['tid']['field'] = 'tid';
-  $handler->display->display_options['arguments']['tid']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['tid']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['tid']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['tid']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['tid']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
-    'program' => 'program',
-  );
-  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'convert';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -173,9 +173,134 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'academic_calendar_event' => 'academic_calendar_event',
   );
+  /* Filter criterion: Content: Academic year (field_academic_year) */
+  $handler->display->display_options['filters']['field_academic_year_value']['id'] = 'field_academic_year_value';
+  $handler->display->display_options['filters']['field_academic_year_value']['table'] = 'field_data_field_academic_year';
+  $handler->display->display_options['filters']['field_academic_year_value']['field'] = 'field_academic_year_value';
+  $handler->display->display_options['filters']['field_academic_year_value']['value'] = array(
+    'all' => 'all',
+  );
+  $handler->display->display_options['filters']['field_academic_year_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['operator_id'] = 'field_academic_year_value_op';
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['label'] = 'Academic year (field_academic_year)';
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['operator'] = 'field_academic_year_value_op';
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['identifier'] = 'field_academic_year_value';
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_academic_year_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    151 => 0,
+    16 => 0,
+    21 => 0,
+    241 => 0,
+    71 => 0,
+    61 => 0,
+    171 => 0,
+    56 => 0,
+    66 => 0,
+    201 => 0,
+    221 => 0,
+    216 => 0,
+    226 => 0,
+    231 => 0,
+    246 => 0,
+    236 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    91 => 0,
+    146 => 0,
+    136 => 0,
+    26 => 0,
+    46 => 0,
+    51 => 0,
+    81 => 0,
+    86 => 0,
+    96 => 0,
+    101 => 0,
+    106 => 0,
+    116 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+  );
+  /* Filter criterion: Content: Academic Calendar Display (field_academic_calendar_display) */
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['id'] = 'field_academic_calendar_display_tid';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['table'] = 'field_data_field_academic_calendar_display';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['field'] = 'field_academic_calendar_display_tid';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['expose']['operator_id'] = 'field_academic_calendar_display_tid_op';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['expose']['label'] = 'Academic Calendar Display (field_academic_calendar_display)';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['expose']['operator'] = 'field_academic_calendar_display_tid_op';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['expose']['identifier'] = 'field_academic_calendar_display_tid';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    151 => 0,
+    16 => 0,
+    21 => 0,
+    241 => 0,
+    71 => 0,
+    61 => 0,
+    171 => 0,
+    56 => 0,
+    66 => 0,
+    201 => 0,
+    221 => 0,
+    216 => 0,
+    226 => 0,
+    231 => 0,
+    246 => 0,
+    236 => 0,
+    31 => 0,
+    36 => 0,
+    41 => 0,
+    91 => 0,
+    146 => 0,
+    136 => 0,
+    26 => 0,
+    46 => 0,
+    51 => 0,
+    81 => 0,
+    86 => 0,
+    96 => 0,
+    101 => 0,
+    106 => 0,
+    116 => 0,
+    121 => 0,
+    126 => 0,
+    131 => 0,
+    141 => 0,
+    156 => 0,
+    161 => 0,
+    166 => 0,
+    176 => 0,
+    181 => 0,
+    186 => 0,
+    191 => 0,
+    206 => 0,
+    211 => 0,
+    251 => 0,
+  );
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['vocabulary'] = 'academic_calendar_display';
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['pane_title'] = 'Academic Calendar: Program';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
