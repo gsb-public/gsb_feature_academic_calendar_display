@@ -301,6 +301,8 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $handler->display->display_options['pane_title'] = 'Academic Calendar: Program';
+  $handler->display->display_options['pane_category']['name'] = 'Customizable Content Lists';
+  $handler->display->display_options['pane_category']['weight'] = '0';
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;

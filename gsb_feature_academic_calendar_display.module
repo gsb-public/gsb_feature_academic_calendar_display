@@ -11,8 +11,7 @@ include_once 'gsb_feature_academic_calendar_display.features.inc';
  */
 function gsb_feature_academic_calendar_display_views_default_views_alter(&$views) {
   if (isset($views['academic_calendar'])) {
-    $last_year =array_pop($form['field_academic_year']['und']['options']);
-    $views['academic_calendar']->display['default']->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = key($last_year);
+    $views['academic_calendar']->display['default']->display_options['arguments']['field_academic_year_value']['default_argument_options']['argument'] = date('Y');
   }
 }
 
