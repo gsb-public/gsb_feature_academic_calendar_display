@@ -13,7 +13,12 @@
 
       $('div.view-grouping:not(:eq(0))').hide();
       $('.calendar-prev').hide();
+      if (total_div === 1)
+      {
+        $('.calendar-prev').hide();
+        $('.calendar-next').hide();
 
+      }
       $('.calendar-prev').click(function(e) {
         e.preventDefault();
         item--;
