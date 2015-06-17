@@ -5,15 +5,6 @@
  */
 
 /**
- * Implements hook_ctools_plugin_api().
- */
-function gsb_feature_academic_calendar_display_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "page_manager" && $api == "pages_default") {
-    return array("version" => "1");
-  }
-}
-
-/**
  * Implements hook_views_api().
  */
 function gsb_feature_academic_calendar_display_views_api($module = NULL, $api = NULL) {
