@@ -93,7 +93,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['fields']['field_academic_year']['label'] = '';
   $handler->display->display_options['fields']['field_academic_year']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_academic_year']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_academic_year']['alter']['text'] = '[field_academic_year] Academic Year';
+  $handler->display->display_options['fields']['field_academic_year']['alter']['text'] = '[field_academic_year]';
   $handler->display->display_options['fields']['field_academic_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_academic_year']['settings'] = array(
     'conditions' => array(
@@ -123,7 +123,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['fields']['field_event_date']['label'] = '';
   $handler->display->display_options['fields']['field_event_date']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_event_date']['settings'] = array(
-    'format_type' => 'short',
+    'format_type' => 'day_month_and_year',
     'fromto' => 'both',
     'multiple_number' => '',
     'multiple_from' => '',

@@ -1,7 +1,7 @@
 name = GSB Feature Academic Calendar Display
 core = 7.x
 package = GSB
-version = 7.x-5.0
+version = 7.x-5.01
 project = gsb_feature_academic_calendar_display
 dependencies[] = ctools
 dependencies[] = gsb_feature_academic_calendar_ct
