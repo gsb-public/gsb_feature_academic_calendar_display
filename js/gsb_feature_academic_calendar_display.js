@@ -31,7 +31,7 @@
         }
         $('div.view-grouping').hide();
         $('div.view-grouping:eq(' + (item - 1) + ')').show();
-
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
 
       });
       $('.calendar-next').click(function(e) {
@@ -46,7 +46,7 @@
         }
         $('div.view-grouping').hide();
         $('div.view-grouping:eq(' + (item - 1) + ')').show();
-
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
 
       });
 
