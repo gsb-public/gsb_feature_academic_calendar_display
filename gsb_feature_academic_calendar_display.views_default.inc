@@ -116,7 +116,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
       ),
     ),
   );
-  /* Field: Content: Event Date */
+  /* Field: Content: Date */
   $handler->display->display_options['fields']['field_event_date']['id'] = 'field_event_date';
   $handler->display->display_options['fields']['field_event_date']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['fields']['field_event_date']['field'] = 'field_event_date';
@@ -155,7 +155,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   $handler->display->display_options['sorts']['field_academic_quarter_value']['id'] = 'field_academic_quarter_value';
   $handler->display->display_options['sorts']['field_academic_quarter_value']['table'] = 'field_data_field_academic_quarter';
   $handler->display->display_options['sorts']['field_academic_quarter_value']['field'] = 'field_academic_quarter_value';
-  /* Sort criterion: Content: Event Date -  start date (field_event_date) */
+  /* Sort criterion: Content: Date -  start date (field_event_date) */
   $handler->display->display_options['sorts']['field_event_date_value']['id'] = 'field_event_date_value';
   $handler->display->display_options['sorts']['field_event_date_value']['table'] = 'field_data_field_event_date';
   $handler->display->display_options['sorts']['field_event_date_value']['field'] = 'field_event_date_value';
@@ -297,6 +297,7 @@ function gsb_feature_academic_calendar_display_views_default_views() {
   );
   $handler->display->display_options['filters']['field_academic_calendar_display_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_academic_calendar_display_tid']['vocabulary'] = 'academic_calendar_display';
+  $handler->display->display_options['filters']['field_academic_calendar_display_tid']['error_message'] = FALSE;
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
