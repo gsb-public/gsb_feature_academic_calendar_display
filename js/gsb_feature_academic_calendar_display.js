@@ -6,7 +6,7 @@
       total_div = $('div.view-grouping').length;
       item = 1;
       $previous = '<a class="calendar-prev" href="#">Current Academic Year</a>';
-      $next = '<a class="calendar-next" href="#">Upcoming Academic Year</a>';
+      $next = '<a class="calendar-next" href="#">Next Academic Year</a>';
 
       $('.view-id-academic_calendar .view-content').append($previous);
       $('.view-id-academic_calendar .view-content').append($next);
